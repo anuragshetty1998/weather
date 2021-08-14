@@ -13,5 +13,5 @@ html {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  background-color: rgb(245, 133, 255);
+  /* background-color: rgb(245, 133, 255); */
 }

@@ -15,7 +15,6 @@ const Navbar = () => {
     setTime(moment().format("ddd, D MMM YYYY    hh:mm A"));
   }, 1000);
 
-  console.log(moment().format("ddd, D MMM YYYY    hh:mm A"));
   return (
     <div className="navbar-div">
       <div className="nav-subdiv">
