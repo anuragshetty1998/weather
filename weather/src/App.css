@@ -11,5 +11,7 @@ html {
   width: 80%;
   height: 100vh;
   margin: 0 auto;
-  background-color: rgb(157, 255, 0);
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(245, 133, 255);
 }
