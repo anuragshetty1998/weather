@@ -6,8 +6,11 @@ import visibility from "../../assets/visibility.png";
 import humidity from "../../assets/humidity.png";
 import "./Homedetails.css";
 
-const Homedetails = ({ urlData }) => {
-  console.log("url", urlData);
+const Homedetails = ({ urlData, unit }) => {
+  const windSpeed =
+    unit === "imperial"
+      ? urlData.wind.speed
+      : parseInt(urlData.wind.speed * 2.237);
 
   const Details = [
     {
@@ -27,7 +30,7 @@ const Homedetails = ({ urlData }) => {
     },
     {
       title: "Wind",
-      value: `${parseInt(urlData.wind.speed * 2.237)}mph`,
+      value: `${windSpeed}mph`,
       image: wind,
     },
     {
@@ -37,7 +40,6 @@ const Homedetails = ({ urlData }) => {
     },
   ];
 
-  console.log(Details);
   return (
     <div className="homedetails-div">
       {Details.map((ele, index) => (

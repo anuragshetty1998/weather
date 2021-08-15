@@ -5,17 +5,27 @@ import Navbar from "../../Components/Navbar/Navbar.js";
 import Homedisplay from "../../Components/Homedisplay/Homedisplay.js";
 import "./Home.css";
 
-const Homedissplay = () => {
+const Home = () => {
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
   const [urlData, setUrlData] = useState();
-  //const [unit, setUnit] = useState("metric");
+  const [tempUnit, setTempUnit] = useState("metric");
+  const [searchTerm, setSearchTerm] = useState();
+  const [searchStart, setSearchStart] = useState(false);
   const key = "cd112e31e2ac490e860d34730870afac";
   const url = "https://api.openweathermap.org/data/2.5/weather?";
 
   useEffect(() => {
-    fetchLocation();
-  }, [latitude, longitude]);
+    if (!searchStart) {
+      fetchLocation();
+    }
+  }, [latitude, longitude, tempUnit]);
+
+  useEffect(() => {
+    if (searchStart) {
+      getCityWeather();
+    }
+  }, [searchStart, tempUnit, searchTerm]);
 
   const saveLocation = (position) => {
     setLatitude(position.coords.latitude);
@@ -26,20 +36,32 @@ const Homedissplay = () => {
     await window.navigator.geolocation.getCurrentPosition(saveLocation);
     if (longitude !== 0 && latitude !== 0)
       await axios
-        .get(url + `lat=${latitude}&lon=${longitude}&units=metric&APPID=${key}`)
+        .get(
+          url +
+            `lat=${latitude}&lon=${longitude}&units=${tempUnit}&APPID=${key}`
+        )
         .then((response) => {
           setUrlData(response.data);
         })
         .catch((err) => console.log(err));
   };
 
+  const getCityWeather = async () => {
+    await axios
+      .get(url + `q=${searchTerm}&units=${tempUnit}&APPID=${key}`)
+      .then((response) => {
+        setUrlData(response.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
-      <Header />
+      <Header setSearchTerm={setSearchTerm} setSearchStart={setSearchStart} />
       <Navbar />
-      {urlData && <Homedisplay urlData={urlData} />}
+      {urlData && <Homedisplay urlData={urlData} setTempUnit={setTempUnit} />}
     </>
   );
 };
 
-export default Homedissplay;
+export default Home;

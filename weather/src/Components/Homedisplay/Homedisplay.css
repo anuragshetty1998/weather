@@ -74,9 +74,32 @@
 
 .temp-button {
   display: flex;
+  justify-content: flex-start;
   height: 3rem;
   width: 5.5rem;
   margin-bottom: 1.4rem;
   border: 1px solid #ffffff;
   margin-left: 0.6rem;
+  cursor: pointer;
+}
+
+.btn-select {
+  display: flex;
+  width: 50%;
+  font-size: 1.6rem;
+  letter-spacing: 0;
+  color: #ffffff;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.btn-notselect {
+  display: flex;
+  width: 50%;
+  font-size: 1.6rem;
+  letter-spacing: 0;
+  color: #e32843;
+  background-color: #ffffff;
+  align-items: center;
+  justify-content: space-around;
 }

@@ -18,10 +18,8 @@ const Navbar = () => {
   return (
     <div className="navbar-div">
       <div className="nav-subdiv">
-        <Link to="/home">
-          <p
-            className={navSelect === "home" ? "nav-text nav-selet" : "nav-text"}
-          >
+        <Link to="/">
+          <p className={navSelect === "" ? "nav-text nav-selet" : "nav-text"}>
             Home
           </p>
         </Link>
