@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
-import Home from "./Container/Home/Home.js";
+import WeatherMain from "./Container/WeatherMain/WeatherMain.js";
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <WeatherMain />
     </div>
   );
 }

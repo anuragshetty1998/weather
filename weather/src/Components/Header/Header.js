@@ -1,14 +1,17 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import logo from "../../assets/logo_web.png";
 import iconsearch from "../../assets/icon_search.png";
 import "./Header.css";
 
 const Header = ({ setSearchTerm, setSearchStart }) => {
   const [getSearch, setGetSearch] = useState("");
+  const history = useHistory();
   const findSearch = () => {
     // setGetSearch("");
     setSearchTerm(getSearch);
     setSearchStart(true);
+    history.push("/");
   };
   return (
     <div className="header-div">
