@@ -9,7 +9,7 @@ import { SelectIcon } from "../../Services/SelectIcon";
 const Homedisplay = ({ urlData, setTempUnit }) => {
   const [unit, setUnit] = useState("metric");
   const [favIcon, setFavIcon] = useState("notfav");
-  //const [recentList, setRecentList] = useState([]);
+  const [recentList, setRecentList] = useState([]);
   const [favList, setFavList] = useState(() => {
     let list = localStorage.getItem("localFav");
     if (list) {
