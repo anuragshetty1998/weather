@@ -4,6 +4,7 @@ import Homedetails from "../Homedetails/Homedetails.js";
 //import sunny from "../../assets/sunny.png";
 import favheart from "../../assets/favheart.png";
 import notfavheart from "../../assets/notfavheart.png";
+import { SelectIcon } from "../../Services/SelectIcon";
 
 const Homedisplay = ({ urlData, setTempUnit }) => {
   const [unit, setUnit] = useState("metric");
@@ -22,25 +23,38 @@ const Homedisplay = ({ urlData, setTempUnit }) => {
     setTempUnit(unit);
   }, [unit]);
 
-  console.log("city", city);
+  //console.log("city", city);
 
   useEffect(() => {
-    if (favList.includes(city)) {
+    if (favList.some((element) => element.city === city)) {
       setFavIcon("fav");
-      console.log("fav-select");
     } else {
       setFavIcon("notfav");
     }
   }, [favIcon, urlData]);
 
-  console.log(favList);
+  // console.log(favList);
 
   const handleFavClick = () => {
     if (favIcon === "fav") {
       setFavIcon("notfav");
-      setFavList(favList.filter((element) => element !== city));
+      setFavList(
+        favList.filter((element) => {
+          if (element["city"] !== city) return element;
+          else return null;
+        })
+      );
     } else {
-      setFavList([...favList, city]);
+      setFavList([
+        ...favList,
+        {
+          city: city,
+          country: urlData.sys.country,
+          id: urlData.weather[0].id,
+          temp: urlData.main.temp,
+          description: urlData.weather[0].description,
+        },
+      ]);
       setFavIcon("fav");
     }
   };
@@ -48,8 +62,6 @@ const Homedisplay = ({ urlData, setTempUnit }) => {
   useEffect(() => {
     localStorage.setItem("localFav", JSON.stringify(favList));
   }, [city, favIcon]);
-
-  let dataImage = require("../../assets/sunny.png");
 
   return (
     <div className="homedis-div">
@@ -68,7 +80,10 @@ const Homedisplay = ({ urlData, setTempUnit }) => {
         </div>
       </div>
       <div className="home-body">
-        <img src={dataImage} alt="icon" />
+        <img
+          src={`/assets/${SelectIcon(urlData.weather[0].id)}.png`}
+          alt="icon"
+        />
         <div className="home-body-sub">
           <h1>{urlData.main.temp}</h1>
           <div className="temp-button">
