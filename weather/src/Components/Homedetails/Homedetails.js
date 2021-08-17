@@ -11,7 +11,6 @@ const Homedetails = ({ urlData, unit }) => {
     unit === "imperial"
       ? urlData.wind.speed
       : parseFloat(urlData.wind.speed * 2.237).toFixed(2);
-  console.log(urlData.wind.speed);
   const Details = [
     {
       title: "Min - Max",
