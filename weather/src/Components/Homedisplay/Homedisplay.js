@@ -9,6 +9,7 @@ import { SelectIcon } from "../../Services/SelectIcon";
 const Homedisplay = ({ urlData, setTempUnit }) => {
   const [unit, setUnit] = useState("metric");
   const [favIcon, setFavIcon] = useState("notfav");
+  //const [recentList, setRecentList] = useState([]);
   const [favList, setFavList] = useState(() => {
     let list = localStorage.getItem("localFav");
     if (list) {
@@ -34,6 +35,13 @@ const Homedisplay = ({ urlData, setTempUnit }) => {
   }, [favIcon, urlData]);
 
   // console.log(favList);
+  // useEffect(() => {
+  //   if (!recentList.includes(city)) {
+  //     setRecentList(...recentList, city);
+  //   }
+  // }, [city]);
+
+  console.log(recentList);
 
   const handleFavClick = () => {
     if (favIcon === "fav") {
