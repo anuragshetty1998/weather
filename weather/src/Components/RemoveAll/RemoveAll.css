@@ -1,0 +1,45 @@
+.fav-removeall-div {
+  height: 21rem;
+  width: 45.8rem;
+  border-radius: 2px;
+  background-color: #ffffff;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fav-removeall-div p {
+  color: #000000;
+  font-size: 1.5rem;
+  letter-spacing: 0;
+  margin-top: 5.8rem;
+}
+
+.removeall-btm-div {
+  margin-top: 5.7rem;
+  width: 21.2rem;
+  height: 3.5rem;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.remove-no-btn {
+  color: #000000;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+  cursor: pointer;
+}
+
+.remove-no-btn:hover {
+  border-radius: 2px;
+  background-color: #f76b1c;
+  color: #ffffff;
+}

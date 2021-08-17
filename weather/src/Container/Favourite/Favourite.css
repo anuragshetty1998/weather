@@ -100,3 +100,9 @@
   width: 1.8rem;
   cursor: pointer;
 }
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
