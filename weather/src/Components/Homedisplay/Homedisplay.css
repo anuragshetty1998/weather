@@ -86,7 +86,7 @@
 .btn-select {
   display: flex;
   width: 50%;
-  font-size: 1.6rem;
+  font-size: 1.65rem;
   letter-spacing: 0;
   color: #ffffff;
   align-items: center;
@@ -96,7 +96,7 @@
 .btn-notselect {
   display: flex;
   width: 50%;
-  font-size: 1.6rem;
+  font-size: 1.65rem;
   letter-spacing: 0;
   color: #e32843;
   background-color: #ffffff;

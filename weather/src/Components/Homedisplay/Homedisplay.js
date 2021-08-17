@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Homedisplay.css";
 import Homedetails from "../Homedetails/Homedetails.js";
-//import { AiOutlineHeart } from "react-icons/ai";
-import sunny from "../../assets/sunny.png";
+//import sunny from "../../assets/sunny.png";
 import favheart from "../../assets/favheart.png";
 import notfavheart from "../../assets/notfavheart.png";
 
@@ -50,6 +49,8 @@ const Homedisplay = ({ urlData, setTempUnit }) => {
     localStorage.setItem("localFav", JSON.stringify(favList));
   }, [city, favIcon]);
 
+  let dataImage = require("../../assets/sunny.png");
+
   return (
     <div className="homedis-div">
       <div className="home-place">
@@ -66,20 +67,19 @@ const Homedisplay = ({ urlData, setTempUnit }) => {
           <p>Add to favourite</p>
         </div>
       </div>
-
       <div className="home-body">
-        <img src={sunny} alt="sunny" />
+        <img src={dataImage} alt="icon" />
         <div className="home-body-sub">
           <h1>{urlData.main.temp}</h1>
           <div className="temp-button">
             <div
-              className={unit === "metric" ? " btn-select" : "btn-notselect"}
+              className={unit === "metric" ? " btn-notselect" : "btn-select"}
               onClick={() => setUnit("metric")}
             >
               °C
             </div>
             <div
-              className={unit === "imperial" ? " btn-select" : " btn-notselect"}
+              className={unit === "imperial" ? " btn-notselect" : " btn-select"}
               onClick={() => setUnit("imperial")}
             >
               °F

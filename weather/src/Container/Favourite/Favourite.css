@@ -1,0 +1,23 @@
+.favmain-div {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.3rem;
+  background-color: rgb(200, 235, 106);
+}
+
+.fav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.3rem;
+  letter-spacing: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1.6rem;
+  color: #ffffff;
+}
+
+.fav-header h3 {
+  font-weight: 500;
+  font-size: 1.3rem;
+}
