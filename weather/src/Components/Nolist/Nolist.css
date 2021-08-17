@@ -1,16 +1,18 @@
 .nolist-div {
   height: 70vh;
-  display: grid;
-  place-items: center;
-  color: #fff;
+  width: 18rem;
+  display: flex;
+  flex-direction: column;
+  color: #ffff;
+  margin: 0 auto;
+  justify-content: center;
 }
-.nolistsub-div img {
+.nolist-div img {
   height: 8.4rem;
   width: 15.9rem;
 }
-.nolistsub-div p {
+.nolist-div p {
   font-size: 1.8rem;
   font-weight: 550;
-  text-align: center;
-  margin-top: 2.5rem;
+  padding-top: 2.5rem;
 }

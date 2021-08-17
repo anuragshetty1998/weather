@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Homedisplay.css";
 import Homedetails from "../Homedetails/Homedetails.js";
-//import sunny from "../../assets/sunny.png";
 import favheart from "../../assets/favheart.png";
 import notfavheart from "../../assets/notfavheart.png";
 import { SelectIcon } from "../../Services/SelectIcon";
@@ -9,7 +8,14 @@ import { SelectIcon } from "../../Services/SelectIcon";
 const Homedisplay = ({ urlData, setTempUnit }) => {
   const [unit, setUnit] = useState("metric");
   const [favIcon, setFavIcon] = useState("notfav");
-  const [recentList, setRecentList] = useState([]);
+  const [recentList, setRecentList] = useState(() => {
+    let list = localStorage.getItem("localRecent");
+    if (list) {
+      return JSON.parse(localStorage.getItem("localRecent"));
+    } else {
+      return [];
+    }
+  });
   const [favList, setFavList] = useState(() => {
     let list = localStorage.getItem("localFav");
     if (list) {
@@ -32,16 +38,20 @@ const Homedisplay = ({ urlData, setTempUnit }) => {
     } else {
       setFavIcon("notfav");
     }
-  }, [favIcon, urlData]);
-
-  // console.log(favList);
-  // useEffect(() => {
-  //   if (!recentList.includes(city)) {
-  //     setRecentList(...recentList, city);
-  //   }
-  // }, [city]);
-
-  console.log(recentList);
+    if (!recentList.some((element) => element.city === city)) {
+      setRecentList([
+        ...recentList,
+        {
+          city: city,
+          country: urlData.sys.country,
+          id: urlData.weather[0].id,
+          temp: urlData.main.temp,
+          description: urlData.weather[0].description,
+          unit: unit,
+        },
+      ]);
+    }
+  }, [favIcon, urlData, city, recentList, favList]);
 
   const handleFavClick = () => {
     if (favIcon === "fav") {
@@ -61,6 +71,7 @@ const Homedisplay = ({ urlData, setTempUnit }) => {
           id: urlData.weather[0].id,
           temp: urlData.main.temp,
           description: urlData.weather[0].description,
+          unit: unit,
         },
       ]);
       setFavIcon("fav");
@@ -69,7 +80,8 @@ const Homedisplay = ({ urlData, setTempUnit }) => {
 
   useEffect(() => {
     localStorage.setItem("localFav", JSON.stringify(favList));
-  }, [city, favIcon]);
+    localStorage.setItem("localRecent", JSON.stringify(recentList));
+  }, [city, favIcon, urlData, recentList, favList]);
 
   return (
     <div className="homedis-div">

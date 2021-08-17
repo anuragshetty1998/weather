@@ -6,10 +6,19 @@ import RemoveAll from "../../Components/RemoveAll/RemoveAll";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-import "./Favourite.css";
+import "../Favourite/Favourite.css";
 
-const Favourite = () => {
+const RecentSearch = () => {
   const [open, setOpen] = useState(false);
+  const [recentList, setRecentList] = useState(() => {
+    let list = localStorage.getItem("localRecent");
+    if (list) {
+      return JSON.parse(localStorage.getItem("localRecent"));
+    } else {
+      return [];
+    }
+  });
+
   const [favList, setFavList] = useState(() => {
     let list = localStorage.getItem("localFav");
     if (list) {
@@ -19,9 +28,9 @@ const Favourite = () => {
     }
   });
 
-  useEffect(() => {
-    localStorage.setItem("localFav", JSON.stringify(favList));
-  }, [favList]);
+  //   useEffect(() => {
+  //     localStorage.setItem("localRecent", JSON.stringify(recentList));
+  //   }, [recentList]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -43,15 +52,15 @@ const Favourite = () => {
 
   return (
     <>
-      {favList.length === 0 ? (
+      {recentList.length === 0 ? (
         <NoList />
       ) : (
         <div className="favmain-div">
           <div className="fav-header">
-            <p>{favList.length} Cities added as favourite</p>
-            <h3 onClick={handleOpen}>Remove All</h3>
+            <p>You recently searched for</p>
+            <h3 onClick={handleOpen}>Clear All</h3>
           </div>
-          {favList.map((element, index) => {
+          {recentList.map((element, index) => {
             return (
               <div className="favsub-list-div" key={index}>
                 <div className="favsub1-div">
@@ -102,4 +111,4 @@ const Favourite = () => {
   );
 };
 
-export default Favourite;
+export default RecentSearch;
