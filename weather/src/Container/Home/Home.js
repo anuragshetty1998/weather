@@ -1,27 +1,32 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Homedisplay from "../../Components/Homedisplay/Homedisplay.js";
+import { url, key } from "../../Services/Api";
 import "./Home.css";
 
 const Home = ({ searchTerm, searchStart }) => {
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
   const [urlData, setUrlData] = useState();
+  const [local, setLocal] = useState(localStorage.getItem("localCity"));
   const [tempUnit, setTempUnit] = useState("metric");
-  const key = "cd112e31e2ac490e860d34730870afac";
-  const url = "https://api.openweathermap.org/data/2.5/weather?";
 
   useEffect(() => {
-    if (!searchStart) {
+    if (!searchStart && !localStorage.getItem("localCity")) {
       fetchLocation();
     }
   }, [latitude, longitude, tempUnit]);
 
   useEffect(() => {
-    if (searchStart) {
+    if (searchStart && !localStorage.getItem("localCity")) {
       getCityWeather();
+      console.log("no", local);
     }
-  }, [searchStart, tempUnit, searchTerm]);
+    if (local) {
+      getLocalCity();
+      console.log("yes", local);
+    }
+  }, [searchStart, tempUnit, searchTerm, local]);
 
   const saveLocation = (position) => {
     setLatitude(position.coords.latitude);
@@ -50,6 +55,29 @@ const Home = ({ searchTerm, searchStart }) => {
       })
       .catch((err) => console.log(err));
   };
+
+  const getLocalCity = async () => {
+    await axios
+      .get(
+        url +
+          `q=${localStorage.getItem(
+            "localCity"
+          )}&units=${tempUnit}&APPID=${key}`
+      )
+      .then((response) => {
+        setUrlData(response.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // useEffect(() => {
+  //   setLocal(localStorage.getItem("localCity"));
+  //   if (local) {
+  //     if (localStorage.getItem("localCity")) {
+  //       getLocalCity();
+  //     }
+  //   }
+  // }, [local]);
 
   return (
     <>

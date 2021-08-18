@@ -8,9 +8,10 @@ const Header = ({ setSearchTerm, setSearchStart }) => {
   const [getSearch, setGetSearch] = useState("");
   const history = useHistory();
   const findSearch = () => {
-    // setGetSearch("");
+    localStorage.removeItem("localCity");
     setSearchTerm(getSearch);
     setSearchStart(true);
+    setGetSearch("");
     history.push("/");
   };
   return (

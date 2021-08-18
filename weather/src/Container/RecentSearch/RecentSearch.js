@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import favheart from "../../assets/favheart.png";
+import { useHistory } from "react-router-dom";
 import { SelectIcon } from "../../Services/SelectIcon";
 import NoList from "../../Components/Nolist/Nolist";
 import RemoveAll from "../../Components/RemoveAll/RemoveAll";
@@ -10,6 +10,7 @@ import "../Favourite/Favourite.css";
 
 const RecentSearch = () => {
   const [open, setOpen] = useState(false);
+  const history = useHistory();
   const [recentList, setRecentList] = useState(() => {
     let list = localStorage.getItem("localRecent");
     if (list) {
@@ -28,9 +29,9 @@ const RecentSearch = () => {
     }
   });
 
-  //   useEffect(() => {
-  //     localStorage.setItem("localRecent", JSON.stringify(recentList));
-  //   }, [recentList]);
+  useEffect(() => {
+    localStorage.setItem("localFav", JSON.stringify(favList));
+  }, [favList]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -40,14 +41,30 @@ const RecentSearch = () => {
     setOpen(false);
   };
 
-  const handleFavIcon = (event) => {
-    console.log(event.target.id);
-    setFavList(
-      favList.filter((element) => {
-        if (element["city"] !== event.target.id) return element;
-        else return null;
-      })
-    );
+  const favIconClick = (data) => {
+    if (favList.some((ele) => ele.city === data.city)) {
+      setFavList(
+        favList.filter((element) => {
+          if (element["city"] !== data.city) return element;
+          else return null;
+        })
+      );
+    } else {
+      setFavList([...favList, data]);
+    }
+  };
+
+  const iconFav = (data) => {
+    if (favList.some((element) => element.city === data)) {
+      return "favheart";
+    } else {
+      return "notfavheart";
+    }
+  };
+
+  const cityClick = (data) => {
+    localStorage.setItem("localCity", data);
+    history.push("/");
   };
 
   return (
@@ -64,7 +81,10 @@ const RecentSearch = () => {
             return (
               <div className="favsub-list-div" key={index}>
                 <div className="favsub1-div">
-                  <p className="favlist-city">
+                  <p
+                    className="favlist-city"
+                    onClick={() => cityClick(element.city)}
+                  >
                     {element.city}, {element.country}
                   </p>
                   <div className="favsub2-div">
@@ -80,10 +100,10 @@ const RecentSearch = () => {
                   </div>
                 </div>
                 <img
-                  src={favheart}
+                  src={`/assets/${iconFav(element.city)}.png`}
                   alt="icon"
                   className="favlist-heart"
-                  onClick={handleFavIcon}
+                  onClick={() => favIconClick(element)}
                   id={element.city}
                 />
               </div>

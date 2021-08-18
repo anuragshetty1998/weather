@@ -1,8 +1,18 @@
 .favmain-div {
-  display: flex;
-  flex-direction: column;
+  height: fit-content;
   margin-top: 2.3rem;
   /* background-color: rgb(200, 235, 106); */
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #ee9e9e;
 }
 
 .fav-header {
@@ -27,9 +37,8 @@
   display: flex;
   align-items: center;
   height: 7.3rem;
-  width: 100%;
   background-color: rgb(255, 255, 255, 0.1);
-  margin-bottom: 1px;
+  margin-bottom: 0.1rem;
   position: relative;
 }
 .favsub-list-div:hover {
@@ -48,6 +57,7 @@
   letter-spacing: 0;
   color: #ffffff;
   margin-left: 1.5rem;
+  cursor: pointer;
 }
 
 .favlist-city:hover {
@@ -62,7 +72,8 @@
   width: 51%;
   align-items: center;
   position: absolute;
-  left: 420px;
+
+  left: 42rem;
 }
 
 .favsub2-div img {

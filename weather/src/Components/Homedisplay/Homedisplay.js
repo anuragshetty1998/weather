@@ -30,8 +30,6 @@ const Homedisplay = ({ urlData, setTempUnit }) => {
     setTempUnit(unit);
   }, [unit]);
 
-  //console.log("city", city);
-
   useEffect(() => {
     if (favList.some((element) => element.city === city)) {
       setFavIcon("fav");

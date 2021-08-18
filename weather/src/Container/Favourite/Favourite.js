@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import favheart from "../../assets/favheart.png";
 import { SelectIcon } from "../../Services/SelectIcon";
 import NoList from "../../Components/Nolist/Nolist";
@@ -10,6 +11,7 @@ import "./Favourite.css";
 
 const Favourite = () => {
   const [open, setOpen] = useState(false);
+  const history = useHistory();
   const [favList, setFavList] = useState(() => {
     let list = localStorage.getItem("localFav");
     if (list) {
@@ -32,13 +34,17 @@ const Favourite = () => {
   };
 
   const handleFavIcon = (event) => {
-    console.log(event.target.id);
     setFavList(
       favList.filter((element) => {
         if (element["city"] !== event.target.id) return element;
         else return null;
       })
     );
+  };
+
+  const cityClick = (data) => {
+    localStorage.setItem("localCity", data);
+    history.push("/");
   };
 
   return (
@@ -51,11 +57,15 @@ const Favourite = () => {
             <p>{favList.length} Cities added as favourite</p>
             <h3 onClick={handleOpen}>Remove All</h3>
           </div>
+
           {favList.map((element, index) => {
             return (
               <div className="favsub-list-div" key={index}>
                 <div className="favsub1-div">
-                  <p className="favlist-city">
+                  <p
+                    className="favlist-city"
+                    onClick={() => cityClick(element.city)}
+                  >
                     {element.city}, {element.country}
                   </p>
                   <div className="favsub2-div">

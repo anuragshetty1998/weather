@@ -34,7 +34,7 @@ const Homedetails = ({ urlData, unit }) => {
     },
     {
       title: "Visibility",
-      value: `${urlData.visibility}`,
+      value: `${urlData.visibility}m`,
       image: visibility,
     },
   ];
