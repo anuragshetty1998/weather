@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import logo from "../../assets/logo_web.png";
+import ham from "../../assets/hamMenu.png";
 import iconsearch from "../../assets/icon_search.png";
 import "./Header.css";
 
@@ -16,8 +17,10 @@ const Header = ({ setSearchTerm, setSearchStart }) => {
   };
   return (
     <div className="header-div">
-      <img src={logo} alt="logo" className="logo" />
-
+      <div className="logo-ham-div">
+        <img src={ham} alt="menu" className="ham-menu" />
+        <img src={logo} alt="logo" className="logo" />
+      </div>
       <div className="search-div">
         <input
           type="text"

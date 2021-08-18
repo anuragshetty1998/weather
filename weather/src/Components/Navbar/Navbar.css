@@ -36,3 +36,9 @@ a {
   color: #ffd639;
   font-weight: 500;
 }
+
+@media all and (max-width: 480px) {
+  .navbar-div {
+    display: none;
+  }
+}

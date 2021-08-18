@@ -16,34 +16,38 @@ const Navbar = () => {
   }, 1000);
 
   return (
-    <div className="navbar-div">
-      <div className="nav-subdiv">
-        <Link to="/">
-          <p className={navSelect === "" ? "nav-text nav-selet" : "nav-text"}>
-            Home
-          </p>
-        </Link>
-        <Link to="/favourite">
-          <p
-            className={
-              navSelect === "favourite" ? "nav-text nav-selet" : "nav-text"
-            }
-          >
-            Favourite
-          </p>
-        </Link>
-        <Link to="/recent-search">
-          <p
-            className={
-              navSelect === "recent-search" ? "nav-text nav-selet" : "nav-text"
-            }
-          >
-            Recent Search
-          </p>
-        </Link>
+    <>
+      <div className="navbar-div">
+        <div className="nav-subdiv">
+          <Link to="/">
+            <p className={navSelect === "" ? "nav-text nav-selet" : "nav-text"}>
+              Home
+            </p>
+          </Link>
+          <Link to="/favourite">
+            <p
+              className={
+                navSelect === "favourite" ? "nav-text nav-selet" : "nav-text"
+              }
+            >
+              Favourite
+            </p>
+          </Link>
+          <Link to="/recent-search">
+            <p
+              className={
+                navSelect === "recent-search"
+                  ? "nav-text nav-selet"
+                  : "nav-text"
+              }
+            >
+              Recent Search
+            </p>
+          </Link>
+        </div>
+        <p className="nav-date">{time}</p>
       </div>
-      <p className="nav-date">{time}</p>
-    </div>
+    </>
   );
 };
 

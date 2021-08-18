@@ -15,7 +15,7 @@
 .search-div {
   box-sizing: border-box;
   height: 4.5rem;
-  width: 45.8rem;
+  width: 47.7%;
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 3px;
   background-color: rgba(255, 255, 255, 0.2);
@@ -46,4 +46,42 @@
 ::placeholder {
   color: rgb(255, 255, 255, 0.5);
   font-size: 1.6rem;
+}
+
+.ham-menu {
+  display: none;
+}
+
+@media all and (max-width: 620px) {
+  .ham-menu {
+    display: flex;
+    height: 1.33rem;
+    width: 2rem;
+  }
+
+  .logo {
+    height: 2.6rem;
+    width: 12.55rem;
+    margin-left: 3.8rem;
+  }
+
+  .logo-ham-div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .search-div input {
+    display: none;
+  }
+
+  .search-div {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    border: none;
+  }
 }

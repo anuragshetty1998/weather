@@ -104,3 +104,66 @@
   align-items: center;
   justify-content: space-around;
 }
+.mbl-date-div {
+  display: none;
+}
+
+@media all and (max-width: 480px) {
+  .mbl-date-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav-mbl-date {
+    opacity: 0.6;
+    color: #ffffff;
+    font-size: 1.44rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    white-space: pre-wrap;
+  }
+
+  .homedis-div {
+    margin-top: 1rem;
+  }
+
+  .home-place {
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 9rem;
+  }
+
+  .home-place p {
+    font-size: 2.1rem;
+  }
+
+  .addfav-div {
+    display: flex;
+    align-items: center;
+    padding-top: 2rem;
+    cursor: pointer;
+  }
+
+  .addfav-div p {
+    height: 1.677rem;
+    font-size: 1.44rem;
+  }
+
+  .home-body {
+    padding-bottom: 8.77rem;
+    border: none;
+  }
+
+  .home-body img {
+    height: 7rem;
+    width: 7.1rem;
+  }
+
+  .home-body h1 {
+    font-size: 5.77rem;
+  }
+
+  .home-body h2 {
+    font-size: 2rem;
+  }
+}

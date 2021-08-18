@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Homedisplay.css";
+import moment from "moment";
 import Homedetails from "../Homedetails/Homedetails.js";
 import favheart from "../../assets/favheart.png";
 import notfavheart from "../../assets/notfavheart.png";
@@ -8,6 +9,9 @@ import { SelectIcon } from "../../Services/SelectIcon";
 const Homedisplay = ({ urlData, setTempUnit }) => {
   const [unit, setUnit] = useState("metric");
   const [favIcon, setFavIcon] = useState("notfav");
+  const [time, setTime] = useState(
+    moment().format("ddd, D MMM YYYY   hh:mm A")
+  );
   const [recentList, setRecentList] = useState(() => {
     let list = localStorage.getItem("localRecent");
     if (list) {
@@ -81,48 +85,59 @@ const Homedisplay = ({ urlData, setTempUnit }) => {
     localStorage.setItem("localRecent", JSON.stringify(recentList));
   }, [city, favIcon, urlData, recentList, favList]);
 
-  return (
-    <div className="homedis-div">
-      <div className="home-place">
-        <p>{`${urlData.name}, ${urlData.sys.country}`}</p>
-        <div className="addfav-div">
-          {
-            <img
-              src={favIcon === "fav" ? favheart : notfavheart}
-              alt="fav"
-              onClick={handleFavClick}
-            />
-          }
+  setInterval(() => {
+    setTime(moment().format("ddd, D MMM YYYY    hh:mm A"));
+  }, 1000);
 
-          <p>Add to favourite</p>
-        </div>
+  return (
+    <>
+      <div className="mbl-date-div">
+        <p className="nav-mbl-date">{time}</p>
       </div>
-      <div className="home-body">
-        <img
-          src={`/assets/${SelectIcon(urlData.weather[0].id)}.png`}
-          alt="icon"
-        />
-        <div className="home-body-sub">
-          <h1>{urlData.main.temp}</h1>
-          <div className="temp-button">
-            <div
-              className={unit === "metric" ? " btn-notselect" : "btn-select"}
-              onClick={() => setUnit("metric")}
-            >
-              °C
-            </div>
-            <div
-              className={unit === "imperial" ? " btn-notselect" : " btn-select"}
-              onClick={() => setUnit("imperial")}
-            >
-              °F
-            </div>
+      <div className="homedis-div">
+        <div className="home-place">
+          <p>{`${urlData.name}, ${urlData.sys.country}`}</p>
+          <div className="addfav-div">
+            {
+              <img
+                src={favIcon === "fav" ? favheart : notfavheart}
+                alt="fav"
+                onClick={handleFavClick}
+              />
+            }
+
+            <p>Add to favourite</p>
           </div>
         </div>
-        <h2>{urlData.weather[0].description}</h2>
+        <div className="home-body">
+          <img
+            src={`/assets/${SelectIcon(urlData.weather[0].id)}.png`}
+            alt="icon"
+          />
+          <div className="home-body-sub">
+            <h1>{urlData.main.temp}</h1>
+            <div className="temp-button">
+              <div
+                className={unit === "metric" ? " btn-notselect" : "btn-select"}
+                onClick={() => setUnit("metric")}
+              >
+                °C
+              </div>
+              <div
+                className={
+                  unit === "imperial" ? " btn-notselect" : " btn-select"
+                }
+                onClick={() => setUnit("imperial")}
+              >
+                °F
+              </div>
+            </div>
+          </div>
+          <h2>{urlData.weather[0].description}</h2>
+        </div>
+        <Homedetails urlData={urlData} unit={unit} />
       </div>
-      <Homedetails urlData={urlData} unit={unit} />
-    </div>
+    </>
   );
 };
 

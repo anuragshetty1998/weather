@@ -32,3 +32,24 @@
   letter-spacing: 0;
   color: #ffffff;
 }
+
+@media all and (max-width: 1020px) {
+  .homedetails-div {
+    /* margin-top: 0rem;
+    justify-content: space-around;
+    padding-left: 40px;
+    padding-right: 40px; */
+    background-color: #ffffff11;
+    border-top: 1px solid #ffffff55;
+    margin-top: 0rem;
+    flex-flow: row nowrap;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    align-items: center;
+    margin-bottom: 0em;
+  }
+
+  .homedetails-div ::-webkit-scrollbar {
+    display: none;
+  }
+}

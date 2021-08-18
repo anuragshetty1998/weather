@@ -43,3 +43,27 @@
   background-color: #f76b1c;
   color: #ffffff;
 }
+
+@media all and (max-width: 820px) {
+  .fav-removeall-div {
+    height: 15rem;
+    width: 31rem;
+  }
+
+  .fav-removeall-div p {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 1.77rem;
+    margin-top: 2.33rem;
+    margin-left: 2.66rem;
+    margin-right: 2.66rem;
+  }
+
+  .removeall-btm-div {
+    margin-top: 2.33rem;
+    width: 21.2rem;
+    height: 3.5rem;
+    display: flex;
+    text-align: center;
+    align-items: center;
+  }
+}

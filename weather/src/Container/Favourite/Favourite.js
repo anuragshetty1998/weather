@@ -62,12 +62,11 @@ const Favourite = () => {
             return (
               <div className="favsub-list-div" key={index}>
                 <div className="favsub1-div">
-                  <p
-                    className="favlist-city"
-                    onClick={() => cityClick(element.city)}
-                  >
-                    {element.city}, {element.country}
-                  </p>
+                  <div className="favlist-city">
+                    <p onClick={() => cityClick(element.city)}>
+                      {element.city}, {element.country}
+                    </p>
+                  </div>
                   <div className="favsub2-div">
                     <img
                       src={`/assets/${SelectIcon(element.id)}.png`}
