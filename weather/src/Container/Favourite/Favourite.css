@@ -129,6 +129,7 @@
   .favsub-list-div {
     height: 8.9rem;
     justify-content: space-between;
+    /* z-index: -1; */
   }
 
   .favsub1-div {
@@ -180,5 +181,13 @@
 
   .favlist-heart {
     margin-right: 2.3rem;
+  }
+}
+
+@media all and (max-width: 540px) {
+  .favmain-div {
+    margin-top: 0rem;
+    width: 91.11%;
+    margin: 0 auto;
   }
 }

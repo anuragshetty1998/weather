@@ -20,11 +20,9 @@ const Home = ({ searchTerm, searchStart }) => {
   useEffect(() => {
     if (searchStart && !localStorage.getItem("localCity")) {
       getCityWeather();
-      console.log("no", local);
     }
     if (local) {
       getLocalCity();
-      console.log("yes", local);
     }
   }, [searchStart, tempUnit, searchTerm, local]);
 
@@ -69,15 +67,6 @@ const Home = ({ searchTerm, searchStart }) => {
       })
       .catch((err) => console.log(err));
   };
-
-  // useEffect(() => {
-  //   setLocal(localStorage.getItem("localCity"));
-  //   if (local) {
-  //     if (localStorage.getItem("localCity")) {
-  //       getLocalCity();
-  //     }
-  //   }
-  // }, [local]);
 
   return (
     <>

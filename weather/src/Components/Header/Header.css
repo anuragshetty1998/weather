@@ -52,7 +52,42 @@
   display: none;
 }
 
+.mobile-menu-div {
+  display: none;
+}
+
 @media all and (max-width: 620px) {
+  .logo {
+    height: 2.6rem;
+    width: 12.55rem;
+  }
+
+  .logo-ham-div {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+  }
+}
+
+.mbl-search-icon {
+  display: none;
+}
+.mbl-searcharea-div {
+  display: none;
+}
+
+@media all and (max-width: 540px) {
+  .header-div {
+    margin-top: 1.77rem;
+    margin-bottom: 4.4rem;
+    margin-left: 1.77rem;
+    margin-right: 1.77rem;
+  }
+
+  .search-div input {
+    display: none;
+  }
+
   .ham-menu {
     display: flex;
     height: 1.33rem;
@@ -65,23 +100,101 @@
     margin-left: 3.8rem;
   }
 
-  .logo-ham-div {
-    display: flex;
-    align-items: center;
-  }
-}
-
-@media all and (max-width: 480px) {
-  .search-div input {
-    display: none;
-  }
-
-  .search-div {
+  /* .search-div {
     background-color: transparent;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
     border: none;
+    margin-right: 2.5rem;
+  } */
+
+  .search-div {
+    display: none;
+  }
+
+  .mbl-search-icon {
+    display: flex;
+    cursor: pointer;
+    margin-right: 4.7rem;
+  }
+
+  .mobile-menu-div {
+    display: flex;
+    height: 100vh;
+    /* width: 30rem; */
+    width: 60%;
+    background-color: #ffffff;
+    position: absolute;
+    left: 0px;
+  }
+
+  .mobile-menu-subdiv {
+    display: flex;
+    flex-direction: column;
+    height: 12.44rem;
+    width: 10rem;
+    margin-top: 2.77rem;
+    margin-left: 3.33rem;
+    justify-content: space-around;
+  }
+  .nav-mbl-text {
+    color: #707070;
+    font-size: 1.5rem;
+    letter-spacing: 0;
+    cursor: pointer;
+  }
+
+  .nav-mbl-selet {
+    color: rgb(0, 0, 0);
+  }
+
+  .mbl-searcharea-div {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    position: absolute;
+  }
+  .mbl-searchsub-div {
+    display: flex;
+    width: 100vw;
+    height: 6.5rem;
+    border-bottom: 2px solid rgb(0, 0, 0, 0.2);
+    align-items: center;
+    justify-content: space-between;
+  }
+  .mbl-search-input {
+    height: 4.3rem;
+    border: none;
+    outline: none;
+    line-height: 85px;
+    color: #070707;
+    /* color: rgba(0, 0, 0, 0.3); */
+    background-color: transparent;
+    /* margin-left: 1rem; */
+    font-size: 1.6rem;
+    width: 60%;
+  }
+
+  .mbl-searchsub-div img {
+    width: 1.7rem;
+    height: 1.7rem;
+    margin-left: 1.7rem;
+    margin-right: 3rem;
+  }
+
+  .search-extra-div {
+    display: flex;
+    width: 1.7rem;
+    height: 1.7rem;
+    margin-left: 1.7rem;
+    margin-right: 3rem;
+  }
+
+  ::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 1.6rem;
   }
 }

@@ -37,7 +37,7 @@ a {
   font-weight: 500;
 }
 
-@media all and (max-width: 480px) {
+@media all and (max-width: 540px) {
   .navbar-div {
     display: none;
   }
