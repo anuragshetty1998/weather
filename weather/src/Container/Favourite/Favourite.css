@@ -47,7 +47,7 @@
 .favsub1-div {
   display: flex;
   align-items: center;
-  width: 95%;
+  width: 90%;
 }
 
 .favlist-city {
@@ -129,7 +129,6 @@
   .favsub-list-div {
     height: 8.9rem;
     justify-content: space-between;
-    /* z-index: -1; */
   }
 
   .favsub1-div {
@@ -189,5 +188,18 @@
     margin-top: 0rem;
     width: 91.11%;
     margin: 0 auto;
+  }
+}
+
+@media all and (max-width: 340px) {
+  .favsub1-div {
+    display: flex;
+    align-items: center;
+    width: 89%;
+  }
+
+  .favsub2-div {
+    width: 24rem;
+    margin-left: 1.67rem;
   }
 }

@@ -47,11 +47,6 @@ const Favourite = () => {
     history.push("/");
   };
 
-  // let menu;
-  // setInterval(() => {
-  //   menu = localStorage.getItem("localMenu");
-  // }, 1000);
-
   return (
     <>
       {favList.length === 0 ? (

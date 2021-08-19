@@ -100,16 +100,6 @@
     margin-left: 3.8rem;
   }
 
-  /* .search-div {
-    background-color: transparent;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    border: none;
-    margin-right: 2.5rem;
-  } */
-
   .search-div {
     display: none;
   }
@@ -128,6 +118,7 @@
     background-color: #ffffff;
     position: absolute;
     left: 0px;
+    z-index: 1;
   }
 
   .mobile-menu-subdiv {
@@ -156,6 +147,7 @@
     height: 100vh;
     background-color: #ffffff;
     position: absolute;
+    z-index: 1;
   }
   .mbl-searchsub-div {
     display: flex;
