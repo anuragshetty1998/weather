@@ -1,5 +1,6 @@
 .favmain-div {
-  height: fit-content;
+  height: 100%;
+  min-height: 100vh;
   margin-top: 2.3rem;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -188,6 +189,7 @@
     margin-top: 0rem;
     width: 91.11%;
     margin: 0 auto;
+    height: 100%;
   }
 }
 

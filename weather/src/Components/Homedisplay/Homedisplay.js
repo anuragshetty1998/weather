@@ -105,8 +105,11 @@ const Homedisplay = ({ urlData, setTempUnit }) => {
                 onClick={handleFavClick}
               />
             }
-
-            <p>Add to favourite</p>
+            {favIcon === "fav" ? (
+              <p>Added to favourite</p>
+            ) : (
+              <p>Add to favourite</p>
+            )}
           </div>
         </div>
         <div className="home-body">

@@ -1,16 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { useHistory, useLocation, Link } from "react-router-dom";
 import logo from "../../assets/logo_web.png";
 import ham from "../../assets/hamMenu.png";
 import iconsearch from "../../assets/icon_search.png";
 import clearIcon from "../../assets/clearIcon.png";
 import backIcon from "../../assets/backIcon.png";
+import searchDarkIcon from "../../assets/searchDarkIcon.png";
 import "./Header.css";
+
+function useWindowSize() {
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+  return size;
+}
 
 const Header = ({ setSearchTerm, setSearchStart }) => {
   const [getSearch, setGetSearch] = useState("");
   const [menu, setMenu] = useState(false);
   const [mblSearch, setMblSearch] = useState(false);
+  const [width, height] = useWindowSize();
   const history = useHistory();
   const location = useLocation();
   const pathname = location.pathname;
@@ -26,35 +41,56 @@ const Header = ({ setSearchTerm, setSearchStart }) => {
 
   return (
     <>
-      <div className="header-div">
-        <div className="logo-ham-div">
+      {navSelect !== "" && width < 540 ? (
+        <div className="mblfav-header-div">
           <img
-            src={ham}
-            alt="menu"
-            className="ham-menu"
-            onClick={() => setMenu(true)}
+            src={backIcon}
+            alt="back-icon"
+            onClick={() => history.push("/")}
           />
-          <img src={logo} alt="logo" className="logo" />
-        </div>
-        <div className="search-div">
-          <input
-            type="text"
-            className="search-input"
-            placeholder="Search city"
-            value={getSearch}
-            onChange={(event) => {
-              setGetSearch(event.target.value);
-            }}
+          <h1>{navSelect === "recent-search" ? "Recent Search" : navSelect}</h1>
+          <img
+            src={searchDarkIcon}
+            alt="search-icon"
+            onClick={() => setMblSearch(true)}
           />
-          <img src={iconsearch} alt="seach-icon" onClick={() => findSearch()} />
         </div>
-        <img
-          src={iconsearch}
-          alt="seach-icon"
-          className="mbl-search-icon"
-          onClick={() => setMblSearch(true)}
-        />
-      </div>
+      ) : (
+        <div className="header-div">
+          <div className="logo-ham-div">
+            <img
+              src={ham}
+              alt="menu"
+              className="ham-menu"
+              onClick={() => setMenu(true)}
+            />
+            <img src={logo} alt="logo" className="logo" />
+          </div>
+          <div className="search-div">
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search city"
+              value={getSearch}
+              onChange={(event) => {
+                setGetSearch(event.target.value);
+              }}
+            />
+            <img
+              src={iconsearch}
+              alt="seach-icon"
+              onClick={() => findSearch()}
+            />
+          </div>
+          <img
+            src={iconsearch}
+            alt="seach-icon"
+            className="mbl-search-icon"
+            onClick={() => setMblSearch(true)}
+          />
+        </div>
+      )}
+
       {menu === true ? (
         <div className="mobile-menu-div" onClick={() => setMenu(false)}>
           <div className="mobile-menu-subdiv" onClick={() => setMenu(false)}>

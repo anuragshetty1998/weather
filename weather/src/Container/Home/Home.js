@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Homedisplay from "../../Components/Homedisplay/Homedisplay.js";
 import { url, key } from "../../Services/Api";
-import "./Home.css";
 
 const Home = ({ searchTerm, searchStart }) => {
   const [latitude, setLatitude] = useState(0);

@@ -76,6 +76,10 @@
   display: none;
 }
 
+.mblfav-header-div {
+  display: none;
+}
+
 @media all and (max-width: 540px) {
   .header-div {
     margin-top: 1.77rem;
@@ -99,6 +103,16 @@
     width: 12.55rem;
     margin-left: 3.8rem;
   }
+
+  /* .search-div {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    border: none;
+    margin-right: 2.5rem;
+  } */
 
   .search-div {
     display: none;
@@ -188,5 +202,32 @@
   ::placeholder {
     color: rgba(0, 0, 0, 0.5);
     font-size: 1.6rem;
+  }
+
+  .mblfav-header-div {
+    display: flex;
+    width: 100vw;
+    height: 6.5rem;
+    background-color: #ffffff;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.7rem;
+  }
+
+  .mblfav-header-div img {
+    width: 1.7rem;
+    height: 1.7rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+
+  .mblfav-header-div h1 {
+    color: #292f33;
+    font-size: 2.3rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+    text-transform: capitalize;
+    margin-right: auto;
   }
 }
