@@ -20,7 +20,7 @@ const Homedetails = ({ urlData, unit }) => {
     {
       title: "Preception",
       value: `0%`,
-      image: preception,
+      image: Precipitation,
     },
     {
       title: "Humidity",
